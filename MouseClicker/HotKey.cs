@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -25,78 +26,77 @@ namespace MouseClicker
         private const int MOD_SHIFT = 0x4;
         private const int MOD_WIN = 0x8;
 
-        public static int nLeftClick { get; set; } = (int)Keys.Q;
-        public static int nMiddleClick { get; set; } = (int)Keys.W;
-        public static int nRightClick { get; set; } = (int)Keys.E;
-        public static int nMiddleWheelUp { get; set; } = (int)Keys.S;
-        public static int nMiddleWheelDown { get; set; } = (int)Keys.D;
-        public static int nStop { get; set; } = (int)Keys.Escape;
-
+        public static int nLeftClick { get; set; }
+        public static int nMiddleClick { get; set; }
+        public static int nRightClick { get; set; }
+        public static int nMiddleWheelUp { get; set; }
+        public static int nMiddleWheelDown { get; set; }
+     
         public static int nOpen { get; set; } = 999;
         public static int nClose { get; set; } = 1000;
-        
-        public static void HotKeyRegist(int handle)
-        {            
-            RegisterHotKey(handle, nLeftClick, MOD_NULL, nLeftClick);            
-            RegisterHotKey(handle, nMiddleClick, MOD_NULL, nMiddleClick);
-            RegisterHotKey(handle, nRightClick, MOD_NULL, nRightClick);
-            RegisterHotKey(handle, nMiddleWheelUp, MOD_NULL, nMiddleWheelUp);
-            RegisterHotKey(handle, nMiddleWheelDown, MOD_NULL, nMiddleWheelDown);        
-            RegisterHotKey(handle, nStop, MOD_NULL, nStop);            
+
+        public static void RegistHotKey(int handle)
+        {
+            foreach (int i in Enum.GetValues(typeof(Keys)))
+            {
+                if (i >= (int)Keys.A && i <= (int)Keys.Z)
+                {
+                    RegisterHotKey(handle, i, MOD_NULL, i);
+                }
+            }
         }
 
-        public static void HotKeyStart(int handle)
+        public static void StartHotKey(int handle)
         {
             RegisterHotKey(handle, nOpen, MOD_ALT, (int)Keys.Q);
             RegisterHotKey(handle, nClose, MOD_ALT, (int)Keys.Escape);
+            RegistKey();
         }
 
-        public static void HotKeyClose(int handle)
+        public static void CloseHotKey(int handle)
         {
             UnregisterHotKey(handle, nOpen);
         }
 
-        public static void HotKeyStop(int handle)
+        public static void StopHotKey(int handle)
         {
-            UnregisterHotKey(handle, nLeftClick);
-            UnregisterHotKey(handle, nMiddleClick);
-            UnregisterHotKey(handle, nRightClick);
-            UnregisterHotKey(handle, nMiddleWheelUp);
-            UnregisterHotKey(handle, nMiddleWheelDown);
-            UnregisterHotKey(handle, nStop);
+            foreach (int i in Enum.GetValues(typeof(Keys)))
+            {
+                UnregisterHotKey(handle, i);                
+            }
         }
 
         public static void LeftClick()
         {
-            if (KeyPressState(nLeftClick))
+            if (StateKeyPress(nLeftClick))
             {
                 MouseEvent.LeftDown();
-                KeyPressSleep(nLeftClick);
+                SleepKeyPress(nLeftClick);
                 MouseEvent.LeftUp();
             }
         }
 
         public static void MiddleClick()
         {
-            if (KeyPressState(nMiddleClick))
+            if (StateKeyPress(nMiddleClick))
             {
                 MouseEvent.MiddleDown();
-                KeyPressSleep(nMiddleClick);
+                SleepKeyPress(nMiddleClick);
                 MouseEvent.MiddleUp();
             }
         }
 
         public static void RightClick()
         {
-            if (KeyPressState(nRightClick))
+            if (StateKeyPress(nRightClick))
             {
                 MouseEvent.RightDown();
-                KeyPressSleep(nRightClick);
+                SleepKeyPress(nRightClick);
                 MouseEvent.RightUp();
             }
         }
              
-        private static bool KeyPressState(int nKey)
+        private static bool StateKeyPress(int nKey)
         {
             bool bKeyPress = false;
             if (HotKey.GetAsyncKeyState(nKey) != 0)
@@ -106,7 +106,7 @@ namespace MouseClicker
             return bKeyPress;
         }
 
-        private static void KeyPressSleep(int nKey)
+        private static void SleepKeyPress(int nKey)
         {
             while (true)
             {
@@ -115,40 +115,13 @@ namespace MouseClicker
             }
         }
 
-        public static void RightHandMode()
+        public static void RegistKey()
         {
            nLeftClick = (int)Keys.Q;
            nMiddleClick = (int)Keys.W;
            nRightClick = (int)Keys.E;
            nMiddleWheelUp = (int)Keys.S;
            nMiddleWheelDown = (int)Keys.D;
-        }
-
-        public static void LeftHandMode()
-        {
-            nLeftClick = (int)Keys.P;
-            nMiddleClick = (int)Keys.OemOpenBrackets;
-            nRightClick = (int)Keys.OemCloseBrackets;
-            nMiddleWheelUp = (int)Keys.OemSemicolon;
-            nMiddleWheelDown = (int)Keys.OemQuotes;
-        }
-
-        public static void NumberPadRightMode()
-        {
-            nLeftClick = (int)Keys.NumPad9;
-            nMiddleClick = (int)Keys.NumPad8;
-            nRightClick = (int)Keys.NumPad7;
-            nMiddleWheelUp = (int)Keys.NumPad6;
-            nMiddleWheelDown = (int)Keys.NumPad5;
-        }
-
-        public static void NumberPadLeftMode()
-        {
-            nLeftClick = (int)Keys.NumPad7;
-            nMiddleClick = (int)Keys.NumPad8;
-            nRightClick = (int)Keys.NumPad9;
-            nMiddleWheelUp = (int)Keys.NumPad5;
-            nMiddleWheelDown = (int)Keys.NumPad6;
         }
     }
 }

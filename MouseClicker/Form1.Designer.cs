@@ -41,8 +41,6 @@
             this.label_WheelScrollLength = new System.Windows.Forms.Label();
             this.trackBar_WheelScrollLength = new System.Windows.Forms.TrackBar();
             this.textBox_WheelScrollLength = new System.Windows.Forms.TextBox();
-            this.comboBox_Mode = new System.Windows.Forms.ComboBox();
-            this.label_Mode = new System.Windows.Forms.Label();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_WheelScrollLength)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +84,7 @@
             // 
             // button_Set
             // 
-            this.button_Set.Location = new System.Drawing.Point(95, 79);
+            this.button_Set.Location = new System.Drawing.Point(95, 50);
             this.button_Set.Name = "button_Set";
             this.button_Set.Size = new System.Drawing.Size(75, 23);
             this.button_Set.TabIndex = 1;
@@ -96,7 +94,7 @@
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(176, 79);
+            this.button_Cancel.Location = new System.Drawing.Point(176, 50);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.button_Cancel.TabIndex = 2;
@@ -106,7 +104,7 @@
             // 
             // button_Close
             // 
-            this.button_Close.Location = new System.Drawing.Point(14, 79);
+            this.button_Close.Location = new System.Drawing.Point(14, 50);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
             this.button_Close.TabIndex = 3;
@@ -117,7 +115,7 @@
             // label_WheelScrollLength
             // 
             this.label_WheelScrollLength.AutoSize = true;
-            this.label_WheelScrollLength.Location = new System.Drawing.Point(12, 44);
+            this.label_WheelScrollLength.Location = new System.Drawing.Point(12, 15);
             this.label_WheelScrollLength.Name = "label_WheelScrollLength";
             this.label_WheelScrollLength.Size = new System.Drawing.Size(85, 12);
             this.label_WheelScrollLength.TabIndex = 5;
@@ -125,7 +123,7 @@
             // 
             // trackBar_WheelScrollLength
             // 
-            this.trackBar_WheelScrollLength.Location = new System.Drawing.Point(103, 44);
+            this.trackBar_WheelScrollLength.Location = new System.Drawing.Point(103, 15);
             this.trackBar_WheelScrollLength.Maximum = 600;
             this.trackBar_WheelScrollLength.Minimum = 200;
             this.trackBar_WheelScrollLength.Name = "trackBar_WheelScrollLength";
@@ -139,7 +137,7 @@
             // textBox_WheelScrollLength
             // 
             this.textBox_WheelScrollLength.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.textBox_WheelScrollLength.Location = new System.Drawing.Point(199, 41);
+            this.textBox_WheelScrollLength.Location = new System.Drawing.Point(199, 12);
             this.textBox_WheelScrollLength.MaxLength = 4;
             this.textBox_WheelScrollLength.Name = "textBox_WheelScrollLength";
             this.textBox_WheelScrollLength.Size = new System.Drawing.Size(42, 21);
@@ -148,38 +146,13 @@
             this.textBox_WheelScrollLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_WheelScrollLength.TextChanged += new System.EventHandler(this.textBox_WheelScrollLength_TextChanged);
             // 
-            // comboBox_Mode
-            // 
-            this.comboBox_Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Mode.FormattingEnabled = true;
-            this.comboBox_Mode.Items.AddRange(new object[] {
-            "오른손",
-            "왼손",
-            "숫자패드 오른손",
-            "숫자패드 왼손"});
-            this.comboBox_Mode.Location = new System.Drawing.Point(113, 12);
-            this.comboBox_Mode.Name = "comboBox_Mode";
-            this.comboBox_Mode.Size = new System.Drawing.Size(133, 20);
-            this.comboBox_Mode.TabIndex = 9;
-            // 
-            // label_Mode
-            // 
-            this.label_Mode.AutoSize = true;
-            this.label_Mode.Location = new System.Drawing.Point(12, 15);
-            this.label_Mode.Name = "label_Mode";
-            this.label_Mode.Size = new System.Drawing.Size(29, 12);
-            this.label_Mode.TabIndex = 10;
-            this.label_Mode.Text = "모드";
-            // 
             // MouseClicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(258, 115);
+            this.ClientSize = new System.Drawing.Size(258, 87);
             this.ControlBox = false;
-            this.Controls.Add(this.label_Mode);
-            this.Controls.Add(this.comboBox_Mode);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Set);
             this.Controls.Add(this.button_Close);
@@ -212,8 +185,6 @@
         private System.Windows.Forms.Label label_WheelScrollLength;
         private System.Windows.Forms.TrackBar trackBar_WheelScrollLength;
         private System.Windows.Forms.TextBox textBox_WheelScrollLength;
-        private System.Windows.Forms.ComboBox comboBox_Mode;
-        private System.Windows.Forms.Label label_Mode;
     }
 }
 

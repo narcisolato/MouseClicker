@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/MouseClicker/v15
+
+/MouseClicker/bin/Debug
+/MouseClicker/obj/Debug
