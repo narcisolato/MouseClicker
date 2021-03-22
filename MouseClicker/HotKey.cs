@@ -38,11 +38,8 @@ namespace MouseClicker
         public static void RegistHotKey(int handle)
         {
             foreach (int i in Enum.GetValues(typeof(Keys)))
-            {
-                if (i >= (int)Keys.A && i <= (int)Keys.Z)
-                {
-                    RegisterHotKey(handle, i, MOD_NULL, i);
-                }
+            {                
+                RegisterHotKey(handle, i, MOD_NULL, i);              
             }
         }
 
